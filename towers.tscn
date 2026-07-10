@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://d1l6ocwalcq7v"]
+
+[ext_resource type="Texture2D" uid="uid://cuelkvyfgp3n5" path="res://sprites/pipe-green.png" id="1_eawb2"]
+[ext_resource type="Script" uid="uid://bg2gesbq4j1ke" path="res://towers.gd" id="1_xuhl3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ql73s"]
+size = Vector2(143.37497, 1276.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0s4m"]
+size = Vector2(89, 606)
+
+[node name="Towers" type="Area2D" unique_id=684958862 groups=["towers"]]
+script = ExtResource("1_xuhl3")
+
+[node name="TowerDown" type="Sprite2D" parent="." unique_id=1835507252]
+position = Vector2(0, 922)
+scale = Vector2(3, 4.034375)
+texture = ExtResource("1_eawb2")
+metadata/_edit_group_ = true
+
+[node name="TowerUp" type="Sprite2D" parent="." unique_id=1389750611]
+position = Vector2(0, -922)
+rotation = -3.1415925
+scale = Vector2(3, 3.976432)
+texture = ExtResource("1_eawb2")
+metadata/_edit_group_ = true
+
+[node name="CollisionShapeTowerUp" type="CollisionShape2D" parent="." unique_id=1644946260]
+position = Vector2(0, -928.25)
+shape = SubResource("RectangleShape2D_ql73s")
+metadata/_edit_group_ = true
+
+[node name="CollisionShapeTowerDown" type="CollisionShape2D" parent="." unique_id=417973697]
+position = Vector2(0, 919.125)
+shape = SubResource("RectangleShape2D_ql73s")
+metadata/_edit_group_ = true
+
+[node name="ScoreDetector" type="Area2D" parent="." unique_id=2024143709 groups=["towers"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreDetector" unique_id=54489045]
+position = Vector2(140.5, -7)
+shape = SubResource("RectangleShape2D_v0s4m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreDetector" to="." method="_on_score_detector_body_entered"]
