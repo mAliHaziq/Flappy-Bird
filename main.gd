@@ -96,7 +96,7 @@ func generate_towers():
 	
 func scored():
 	score += 1
-	if score % 10 == 0 and last_toggled_score != score:
+	if score % 7 == 0 and last_toggled_score != score:
 		last_toggled_score = score
 		toggle_background()
 	$Point.play()
